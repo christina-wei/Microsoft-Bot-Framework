@@ -1,0 +1,6 @@
+az ad app create --display-name "bot-python-ad" --password "jw6m-792p4h6L1btVjW9~i.~c7.it5gaq." --available-to-other-tenants
+az deployment group create --resource-group "bot-python" --template-file ".\deploymentTemplates\template-with-preexisting-rg.json" --parameters appId="40a39a9a-c743-421e-b36a-6a6ece6ae3ca" appSecret="jw6m-792p4h6L1btVjW9~i.~c7.it5gaq." botId="wechris-bot-python" newWebAppName="bot-python-app-service" newAppServicePlanName="bot-python-app-service-plan" appServicePlanLocation="East US" --name "bot-python-create-app-service"
+az deployment group create --resource-group "bot-python" --template-file ".\deploymentTemplates\template-with-preexisting-rg.json" --parameters appId="40a39a9a-c743-421e-b36a-6a6ece6ae3ca" appSecret="jw6m-792p4h6L1btVjW9~i.~c7.it5gaq." botId="wechris-bot-python" newWebAppName="bot-python-app-service" existingAppServicePlan="bot-python-app-service-plan" appServicePlanLocation="East US" --name "bot-python-app-service"
+az webapp deployment source config-zip --resource-group "bot-python" --name "bot-python-app-service" --src ".\bot.zip"
+
+Make sure to change app service plan to free tier!
